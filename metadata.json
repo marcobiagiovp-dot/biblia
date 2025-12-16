@@ -1,0 +1,5 @@
+{
+  "name": "React Bible Reader",
+  "description": "A simple and elegant Bible reader application built with React and Tailwind CSS. It features book, chapter, and verse selection, dark mode, and adjustable font sizes for a comfortable reading experience.",
+  "requestFramePermissions": []
+}
