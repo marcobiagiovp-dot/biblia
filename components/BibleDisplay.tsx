@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import type { BibleVerse, Highlight } from '../types';
 import { ShareIcon } from './icons';
@@ -90,7 +89,8 @@ export const BibleDisplay: React.FC<BibleDisplayProps> = ({
   onHighlightClick,
   onShareVerse,
 }) => {
-  const verseRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  // FIX: The ref is for a div element, not a paragraph.
+  const verseRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     verseRefs.current = verseRefs.current.slice(0, verses.length);
@@ -120,7 +120,8 @@ export const BibleDisplay: React.FC<BibleDisplayProps> = ({
         <div 
           key={verse.verse} 
           id={`verse-${verse.verse}`} 
-          ref={el => verseRefs.current[index] = el}
+          // FIX: Ref callback should not return a value.
+          ref={el => { verseRefs.current[index] = el; }}
           className="mb-4 leading-relaxed flex items-start group"
         >
           <sup className="font-sans font-bold text-blue-600 dark:text-blue-400 mr-2 select-none">
